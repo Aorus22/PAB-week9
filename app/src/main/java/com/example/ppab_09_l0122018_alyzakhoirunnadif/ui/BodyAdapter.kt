@@ -19,6 +19,8 @@ class BodyAdapter(private val listCharacters: ArrayList<Chara>) : RecyclerView.A
         val character = listCharacters[position]
         viewHolder.tvName.text = character.name
         viewHolder.tvDescription.text = character.description
+        val stringElementPath = "${character.element} - ${character.pathname}"
+        viewHolder.tvElement_Path.text = stringElementPath
         Glide.with(viewHolder.itemView.context)
             .load(character.splashart)
             .into(viewHolder.ivSplashArt)
@@ -32,6 +34,7 @@ class BodyAdapter(private val listCharacters: ArrayList<Chara>) : RecyclerView.A
         val ivSplashArt: ImageView = view.findViewById(R.id.ivSplashArt)
         val tvName: TextView = view.findViewById(R.id.tvName)
         val tvDescription: TextView = view.findViewById(R.id.tvDescription)
+        val tvElement_Path: TextView = view.findViewById(R.id.tvElement_Path)
     }
 }
 

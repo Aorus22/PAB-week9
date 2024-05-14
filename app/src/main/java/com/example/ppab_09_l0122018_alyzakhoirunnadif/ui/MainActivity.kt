@@ -41,9 +41,12 @@ class MainActivity : AppCompatActivity() {
                     val name = character.name.stringValue
                     val description = character.description.stringValue
                     val splashArtUrl = character.splashart.stringValue
-
+                    val pathname = character.pathname.stringValue
+                    val element = character.pathname.stringValue
+                    val stringElementPath = "${element} - ${pathname}"
                     binding.tvName.text = name
                     binding.tvDescription.text = description
+                    binding.tvElementPath.text = stringElementPath
                     Glide.with(this@MainActivity).load(splashArtUrl).into(binding.ivSplashArt)
                     binding.progressBar.visibility = View.INVISIBLE
                 }

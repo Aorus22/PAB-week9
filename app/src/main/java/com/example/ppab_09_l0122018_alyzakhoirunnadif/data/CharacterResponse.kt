@@ -7,7 +7,9 @@ data class Document(val fields: Fields)
 data class Fields(
     val name: StringValue,
     val description: StringValue,
-    val splashart: StringValue
+    val splashart: StringValue,
+    val pathname: StringValue,
+    val element: StringValue
 )
 
 data class StringValue(val stringValue: String)

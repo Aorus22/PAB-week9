@@ -38,7 +38,9 @@ class ListBodyActivity : AppCompatActivity() {
                     val name = document.fields.name.stringValue
                     val description = document.fields.description.stringValue
                     val splashart = document.fields.splashart.stringValue
-                    listCharas.add(Chara(name, description, splashart))
+                    val pathname = document.fields.pathname.stringValue
+                    val element = document.fields.element.stringValue
+                    listCharas.add(Chara(name, description, splashart, pathname, element))
                 }
                 withContext(Dispatchers.Main) {
                     val adapter = BodyAdapter(listCharas)
