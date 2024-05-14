@@ -7,8 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.ppab_09_l0122018_alyzakhoirunnadif.data.Chara
 
-class BodyAdapter(private val listCharacters: ArrayList<Character>) : RecyclerView.Adapter<BodyAdapter.ViewHolder>() {
+class BodyAdapter(private val listCharacters: ArrayList<Chara>) : RecyclerView.Adapter<BodyAdapter.ViewHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_body, viewGroup, false)
         return ViewHolder(view)
@@ -33,3 +34,4 @@ class BodyAdapter(private val listCharacters: ArrayList<Character>) : RecyclerVi
         val tvDescription: TextView = view.findViewById(R.id.tvDescription)
     }
 }
+
