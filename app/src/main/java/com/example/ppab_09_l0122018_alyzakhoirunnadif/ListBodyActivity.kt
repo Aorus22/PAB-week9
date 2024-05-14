@@ -11,7 +11,7 @@ import com.example.ppab_09_l0122018_alyzakhoirunnadif.databinding.ActivityListBo
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
-import org.json.JSONArray
+import org.json.JSONObject
 
 class ListBodyActivity : AppCompatActivity() {
 
@@ -34,23 +34,25 @@ class ListBodyActivity : AppCompatActivity() {
     private fun getListBody() {
         binding.progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
-        val url = "https://jsonplaceholder.typicode.com/posts"
+        val url = "https://firestore.googleapis.com/v1/projects/test-20d94/databases/(default)/documents/PPAB-09/list_char"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
                 binding.progressBar.visibility = View.INVISIBLE
 
-                val listBody = ArrayList<String>()
+                val listCharacters = ArrayList<Character>()
                 val result = String(responseBody)
                 Log.d(TAG, result)
                 try {
-                    val jsonArray = JSONArray(result)
-                    for (i in 0 until jsonArray.length()) {
-                        val jsonObject = jsonArray.getJSONObject(i)
-                        val body = jsonObject.getString("body")
-                        val title = jsonObject.getString("title")
-                        listBody.add("\n$body\n — $title\n")
+                    val jsonObject = JSONObject(result)
+                    val list = jsonObject.getJSONObject("fields").getJSONObject("list").getJSONObject("arrayValue").getJSONArray("values")
+                    for (i in 0 until list.length()) {
+                        val item = list.getJSONObject(i).getJSONObject("mapValue").getJSONObject("fields")
+                        val name = item.getJSONObject("name").getString("stringValue")
+                        val description = item.getJSONObject("description").getString("stringValue")
+                        val splashart = item.getJSONObject("splashart").getString("stringValue")
+                        listCharacters.add(Character(name, description, splashart))
                     }
-                    val adapter = BodyAdapter(listBody)
+                    val adapter = BodyAdapter(listCharacters)
                     binding.listBody.adapter = adapter
                 } catch (e: Exception) {
                     Toast.makeText(this@ListBodyActivity, e.message, Toast.LENGTH_SHORT).show()
