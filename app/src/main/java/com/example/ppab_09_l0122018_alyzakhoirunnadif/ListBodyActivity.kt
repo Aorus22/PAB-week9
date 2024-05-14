@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ppab_09_l0122018_alyzakhoirunnadif.databinding.ActivityListBodyBinding
 import com.loopj.android.http.AsyncHttpClient
@@ -26,8 +25,6 @@ class ListBodyActivity : AppCompatActivity() {
         setContentView(binding.root)
         val layoutManager = LinearLayoutManager(this)
         binding.listBody.layoutManager = layoutManager
-        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-        binding.listBody.addItemDecoration(itemDecoration)
         getListBody()
     }
 
