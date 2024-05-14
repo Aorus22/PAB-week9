@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
     private fun getRandomCharacter() {
         binding.progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
-        val url = "https://firestore.googleapis.com/v1/projects/test-20d94/databases/(default)/documents/PPAB-09/list_char"
+        val url = "https://firestore.googleapis.com/v1/projects/test-20d94/databases/(default)/documents/PPAB-09"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
                 binding.progressBar.visibility = View.INVISIBLE
@@ -42,9 +42,9 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, result)
                 try {
                     val responseObject = JSONObject(result)
-                    val charactersArray = responseObject.getJSONObject("fields").getJSONObject("list").getJSONObject("arrayValue").getJSONArray("values")
-                    val randomIndex = Random.nextInt(charactersArray.length())
-                    val character = charactersArray.getJSONObject(randomIndex).getJSONObject("mapValue").getJSONObject("fields")
+                    val documentsArray = responseObject.getJSONArray("documents")
+                    val randomIndex = Random.nextInt(documentsArray.length())
+                    val character = documentsArray.getJSONObject(randomIndex).getJSONObject("fields")
 
                     val name = character.getJSONObject("name").getString("stringValue")
                     val description = character.getJSONObject("description").getString("stringValue")

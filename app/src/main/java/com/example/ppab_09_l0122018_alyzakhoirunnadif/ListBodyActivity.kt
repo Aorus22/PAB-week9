@@ -31,7 +31,7 @@ class ListBodyActivity : AppCompatActivity() {
     private fun getListBody() {
         binding.progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
-        val url = "https://firestore.googleapis.com/v1/projects/test-20d94/databases/(default)/documents/PPAB-09/list_char"
+        val url = "https://firestore.googleapis.com/v1/projects/test-20d94/databases/(default)/documents/PPAB-09/"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Array<Header>, responseBody: ByteArray) {
                 binding.progressBar.visibility = View.INVISIBLE
@@ -41,9 +41,9 @@ class ListBodyActivity : AppCompatActivity() {
                 Log.d(TAG, result)
                 try {
                     val jsonObject = JSONObject(result)
-                    val list = jsonObject.getJSONObject("fields").getJSONObject("list").getJSONObject("arrayValue").getJSONArray("values")
-                    for (i in 0 until list.length()) {
-                        val item = list.getJSONObject(i).getJSONObject("mapValue").getJSONObject("fields")
+                    val documentsArray = jsonObject.getJSONArray("documents")
+                    for (i in 0 until documentsArray.length()) {
+                        val item = documentsArray.getJSONObject(i).getJSONObject("fields")
                         val name = item.getJSONObject("name").getString("stringValue")
                         val description = item.getJSONObject("description").getString("stringValue")
                         val splashart = item.getJSONObject("splashart").getString("stringValue")
