@@ -4,4 +4,12 @@
     <string name="title">- Title</string>
     <string name="show_list_body">Show list of body</string>
     <string name="gambar">gambar</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="splash_art_url">Splash Art Image URL</string>
+    <string name="character_s_path">Character\'s Path</string>
+    <string name="element">Element</string>
+    <string name="submit">Submit</string>
+    <string name="add_new_character">Add New Character</string>
+    <string name="preview_image">Preview Image</string>
 </resources>

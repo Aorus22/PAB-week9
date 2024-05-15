@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/description"
+            android:layout_below="@id/etName"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/etSplashArt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/splash_art_url"
+            android:layout_below="@id/etDescription" />
+
+        <TextView
+            android:id="@+id/tvPreviewLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/preview_image"
+            android:layout_below="@id/etSplashArt"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <ImageView
+            android:id="@+id/imgPreview"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_below="@id/tvPreviewLabel"
+            android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/etPathname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/character_s_path"
+            android:layout_below="@id/imgPreview"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/etElement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/element"
+            android:layout_below="@id/etPathname"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etElement"
+            android:text="@string/submit"/>
+    </RelativeLayout>
+</ScrollView>

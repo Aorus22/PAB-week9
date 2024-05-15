@@ -15,6 +15,9 @@
         android:theme="@style/Theme.PPAB09_L0122018_AlyzaKhoirunNadif"
         tools:targetApi="31">
         <activity
+            android:name=".ui.FormActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.ListBodyActivity"
             android:exported="false" />
         <activity

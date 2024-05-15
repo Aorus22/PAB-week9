@@ -26,6 +26,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnAllBody.setOnClickListener {
             startActivity(Intent(this@MainActivity, ListBodyActivity::class.java))
         }
+        binding.btnForm.setOnClickListener {
+            startActivity(Intent(this@MainActivity, FormActivity::class.java))
+        }
     }
 
     private fun getRandomCharacter() {
